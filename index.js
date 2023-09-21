@@ -3,7 +3,7 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 
 //set the port for website
-const port = 3000; 
+const port = 8000; 
 
 //setup static files folder
 app.use(express.static('./assets'));
