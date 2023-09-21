@@ -1,8 +1,17 @@
-
 module.exports.home = function(req, res){
   try{
     res.render('detail_view', {
       title: 'Details',
+    });
+  } catch(err){
+    console.log(`******error encountered index_controller****** ${err}`);
+  }
+}
+
+module.exports.addHabit = function(req, res){
+  try{
+    res.render('add_habit', {
+      title: 'Add New Task',
     });
   } catch(err){
     console.log(`******error encountered index_controller****** ${err}`);
