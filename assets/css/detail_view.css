@@ -1,0 +1,13 @@
+#task-item {
+  display: flex;
+  flex-direction: row;
+}
+#task-item #task-detail {
+  flex-grow: 1;
+  float: right;
+}
+#task-item #task-detail p {
+  text-align: right;
+}
+
+/*# sourceMappingURL=detail_view.css.map */

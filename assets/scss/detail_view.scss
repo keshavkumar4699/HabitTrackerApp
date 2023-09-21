@@ -1,0 +1,18 @@
+#task-item{
+  display: flex; 
+  flex-direction: row;
+  span{
+
+  }
+  #task-detail{
+    flex-grow: 1;
+    float: right;
+    p{
+      text-align: right;
+    }
+  }
+}
+
+
+
+

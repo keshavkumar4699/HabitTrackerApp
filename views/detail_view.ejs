@@ -1,3 +1,30 @@
-<div>
-  
+<link rel="stylesheet" href="css/detail_view.css">
+<div class="d-flex" id="wrapper">
+
+  <%-include('./includes/_sidebar.ejs')%>
+
+    <div class="list-group w-100">
+
+      <div class="input-group b-1" id="task-item">
+        <span class="input-group-text">
+          <input class="form-check-input mt-0" type="checkbox" value="">
+        </span>
+        <div class="list-group-item" id="task-detail">
+          <div class="m-2 w-100">
+            <h6 class="mb-1">Workout</h6>
+            <p><i class="fa fa-star-o"></i></p>
+            <!-- changes to <i class="fa fa-star"></i> -->
+            <div class="d-flex w-100 justify-content-between">
+              <small>12</small>
+              <small>40</small>
+              <small>70/80</small>
+              <small>Daily</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 </div>
+
+<script src="js/detail_view.js"></script>

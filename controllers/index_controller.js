@@ -1,7 +1,7 @@
 
 module.exports.home = function(req, res){
   try{
-    res.render('detail_view.ejs', {
+    res.render('detail_view', {
       title: 'Details',
     });
   } catch(err){
