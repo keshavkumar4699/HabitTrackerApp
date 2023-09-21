@@ -1,0 +1,13 @@
+#add-habit-container{
+  width: 60%;
+  margin: auto;
+  form{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #add-habit-container {
+    width: 80%;
+  }
+}

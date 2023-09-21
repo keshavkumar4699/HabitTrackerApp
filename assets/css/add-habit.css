@@ -1,0 +1,15 @@
+#add-habit-container {
+  width: 60%;
+  margin: auto;
+}
+#add-habit-container form {
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  #add-habit-container {
+    width: 80%;
+  }
+}
+
+/*# sourceMappingURL=add-habit.css.map */

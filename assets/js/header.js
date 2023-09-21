@@ -23,3 +23,8 @@ function myInitCode() {
       });
   }
 }
+
+function visitPage(){
+  window.location='/add_habit';
+}
+
