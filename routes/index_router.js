@@ -5,5 +5,6 @@ const indexController = require('../controllers/index_controller');
 
 router.get('/', indexController.home);
 router.get('/add_habit', indexController.addHabit);
+router.get('/week_view', indexController.week_detail);
 
 module.exports = router;
