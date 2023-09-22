@@ -1,20 +1,14 @@
-module.exports.home = function(req, res){
+const Habit = require("../models/habit_list");
+
+module.exports.home = async function(req, res){
   try{
-    res.render('detail_view', {
+    const habitList = await Habit.find({}); 
+    res.render("detail_view", {
       title: 'Details',
+      habits:  habitList
     });
   } catch(err){
     console.log(`******error encountered index_controller****** ${err}`);
-  }
-}
-
-module.exports.addHabit = function(req, res){
-  try{
-    res.render('add_habit', {
-      title: 'Add New Task',
-    });
-  } catch(err){
-    console.log(`******error encountered add_habit controller****** ${err}`);
   }
 }
 

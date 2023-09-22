@@ -1,13 +1,28 @@
 const mongoose = require('mongoose');
 
-const statusSchema = new mongoose.Schema({
+const habitSchema = new mongoose.Schema({
   name:{
     type: String,
     required: true,
     unique: true
   },
-  time:{
-    type: time,
+  favorite:{
+    type: Boolean,
+  },
+  streak:{
+    type: Number,
+    default: 0
+  },
+  bestStreak:{
+    type: Number,
+    default: 0
+  },
+  total:{
+    type: Number,
+    default: 0,
+  },
+  habit_time:{
+    type: String,
     required: true
   },
   frequency:{
@@ -17,7 +32,7 @@ const statusSchema = new mongoose.Schema({
   status: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref:'Habit'
+      ref:'Status'
     }
   ]
 }, 
@@ -25,6 +40,6 @@ const statusSchema = new mongoose.Schema({
   timestamps: true
 });
 
-const Status= mongoose.model('Status', statusSchema);
+const Habit= mongoose.model('Habit', habitSchema);
 
-module.exports = Status;
+module.exports = Habit;

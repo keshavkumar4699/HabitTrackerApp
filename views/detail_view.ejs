@@ -7,25 +7,28 @@
   <%-include('./includes/_sidebar.ejs')%>
 
     <div class="container">
-      <div class="list-group w-100">
-        <div class="input-group b-1" id="task-item">
+      <div class="list-group w-100 mt-2">
+        <%for(let i of habits){%>
+        <div class="input-group mb-2" id="task-item">
           <span class="input-group-text">
-            <input class="form-check-input mt-0" type="checkbox" value="">
+            <input class="form-check-input mt-0" type="checkbox" name="habitCheckbox" id="<%=i._id%>">
           </span>
           <div class="list-group-item" id="task-detail">
             <div class="m-2 w-100">
-              <h6 class="mb-1">Workout</h6>
+              <h6 class="mb-1"><%=i.name%></h6>
               <p><i class="fa fa-star-o"></i></p>
               <!-- changes to <i class="fa fa-star"></i> -->
               <div class="d-flex w-100 justify-content-between">
-                <small>12</small>
-                <small>40</small>
-                <small>70/80</small>
-                <small>Daily</small>
+                <small><%=i.streak%> days</small>
+                <small><%=i.bestStreak%> best</small>
+                <small><%=i.total%> total</small>
+                <small><%=i.habit_time%></small>
+                <small><%=i.frequency%></small>
               </div>
             </div>
           </div>
         </div>
+        <%}%>
       </div>
     </div>
 </div>

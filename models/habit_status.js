@@ -1,4 +1,3 @@
-const { time } = require('console');
 const mongoose = require('mongoose');
 
 const statusSchema = new mongoose.Schema({
@@ -14,6 +13,6 @@ const statusSchema = new mongoose.Schema({
   timestamps: true
 });
 
-const Habit= mongoose.model('Habit', habitSchema);
+const Status= mongoose.model('Status', statusSchema);
 
-module.exports = Habit;
+module.exports = Status;
