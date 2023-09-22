@@ -33,7 +33,7 @@ let currentYear = date.getFullYear();
 //function to render days
 function renderCalendar() {
   //get prev month current month and next month days
-  date.setDate(1);
+  // date.setDate(1);
   const firstDay = new Date(currentYear, currentMonth, 1);
   const lastDay = new Date(currentYear, currentMonth + 1, 0);
   const lastDayIndex = lastDay.getDay();

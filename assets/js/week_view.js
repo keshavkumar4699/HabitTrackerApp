@@ -1,6 +1,8 @@
 const daysContainer = document.querySelector(".days");
-nextBtn = document.querySelector(".next-btn");
-prevBtn = document.querySelector(".prev-btn");
+nextMonthBtn = document.querySelector(".next-month-btn");
+prevMonthBtn = document.querySelector(".prev-month-btn");
+nextWeekBtn = document.querySelector(".next-week-btn");
+prevWeekBtn = document.querySelector(".prev-week-btn");
 todayBtn = document.querySelector(".today-btn");
 month = document.querySelector(".month");
 
@@ -21,107 +23,70 @@ const months = [
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-//get current date
-const date = new Date();
+var curr = new Date(); // get current date
+var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
 
-//get current month
-let currentMonth = date.getMonth();
+var firstday = new Date(curr.setDate(first));
 
-//get current year
-let currentYear = date.getFullYear();
-
-//function to render days
-function renderCalendar() {
-  //get prev month current month and next month days
-  date.setDate(1);
-  const firstDay = new Date(currentYear, currentMonth, 1);
-  const lastDay = new Date(currentYear, currentMonth + 1, 0);
-  const lastDayIndex = lastDay.getDay();
-  const lastDayDate = lastDay.getDate();
-  const prevLastDay = new Date(currentYear, currentMonth, 0);
-  const prevLastDayDate = prevLastDay.getDate();
-  const nextDays = 7 - lastDayIndex - 1;
+function renderWeekCalendar(weekfirstday) {
 
   //update current year and month in header
-  month.innerHTML = `${months[currentMonth]} ${currentYear}`;
+  month.innerHTML = `${
+    months[weekfirstday.getMonth()]
+  } ${weekfirstday.getFullYear()}`;
 
   //update days html
   let daysHTMLQueries = "";
 
-  //prev days html
-  for (let x = firstDay.getDay(); x > 0; x--) {
-    daysHTMLQueries += `<div class="day prev">${prevLastDayDate - x + 1}</div>`;
-  }
-  //current month days
-  for (let i = 1; i <= lastDayDate; i++) {
-    //check if its today then add today class
-    if (
-      i === new Date().getDate() &&
-      currentMonth === new Date().getMonth() &&
-      currentYear === new Date().getFullYear()
-    ) {
-      console.log("today");
-      daysHTMLQueries += `<div class="day today">${i}</div>`;
-    } else {
-      daysHTMLQueries += `<div class="day">${i}</div>`;
-    }
+  for (let i = 1; i <= 7; i++) {
+    let display_date = weekfirstday.getDate();
+    daysHTMLQueries += `<div class="day" id="day">${display_date}</div>`;
+    weekfirstday.setDate(weekfirstday.getDate() + 1);//incrementing weekdays by 1
   }
 
-  //next month days
-  for (let j = 1; j <= nextDays; j++) {
-    daysHTMLQueries += `<div class="day next">${j}</div>`;
-  }
-
-  //run this command with every render
   hideTodayBtn();
   daysContainer.innerHTML = daysHTMLQueries;
 }
 
-renderCalendar();
+renderWeekCalendar(firstday);
 
-//next month button
-nextBtn.addEventListener("click", () => {
-  currentMonth++;
-  if (currentMonth > 11) {
-    //if month get greater than 11 make it 0 and increse year by 1
-    currentMonth = 0;
-    currentYear++;
-  }
-  //render calendar
-  renderCalendar();
+//next week button
+nextWeekBtn.addEventListener("click", () => {
+  first = curr.getDate() - curr.getDay();
+  first = first + 7;
+
+  let nextday = new Date(curr.setDate(first));
+  renderWeekCalendar(nextday);
 });
 
-//previous month button
-prevBtn.addEventListener("click", () => {
-  currentMonth--;
-  //check if month is less than 0
-  if (currentMonth < 0) {
-    //if month get less than 0 make it 12 and decrese year by 1
-    currentMonth = 11;
-    currentYear--;
-  }
-  //render calendar
-  renderCalendar();
+//previous week button
+prevWeekBtn.addEventListener("click", () => {
+  first = curr.getDate() - curr.getDay();
+  first = first - 7;
+
+  let prevday = new Date(curr.setDate(first));
+  renderWeekCalendar(prevday);
 });
 
 //go to today
 todayBtn.addEventListener("click", () => {
-  // set month and year to current
-  currentMonth = date.getMonth();
-  currentYear = date.getFullYear();
-  //renderCalendar();
-  renderCalendar();
+  temp = 0;//for keeping track of increment and decrement of weeks
+
+  let curr = new Date(); // get current date
+  let first = curr.getDate() - curr.getDay();
+  firstday = new Date(curr.setDate(first));
+  //renderWeekCalendar();
+  renderWeekCalendar(firstday);
 });
 
 //hide today button if already current month selected and vice versa
 function hideTodayBtn(){
+  console.log(first);
   if(
-    currentMonth === new Date().getMonth() &&
-    currentYear === new Date().getFullYear()
+    firstday.getDate() === first+7
   ){
     todayBtn.style.display = "none";
   } else{
     todayBtn.style.display = "flex";
   }
 }
-

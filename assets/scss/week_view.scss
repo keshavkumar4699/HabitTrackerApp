@@ -107,5 +107,16 @@ $red-color: #dc3545;
 .days .day.next,
 .days .day.prev{
   color: #CCC;
+}
 
+.task{
+  margin: 20px 0px 0px;
+  background-color: #3D8BFD;
+  // border: 2px solid #CCC;
+  padding: 20px 10px;
+  border-radius: 10px;
+
+  h6{
+    margin-bottom: 10px;
+  }
 }
