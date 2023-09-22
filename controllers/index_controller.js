@@ -27,3 +27,14 @@ module.exports.week_detail = function(req, res){
     console.log(`******error encountered week_view controller****** ${err}`);
   }
 }
+
+module.exports.month_detail = function(req, res){
+  try{
+    res.render('month_view', {
+      title: 'Month View',
+    });
+  } catch(err){
+    console.log(`******error encountered week_view controller****** ${err}`);
+  }
+}
+
