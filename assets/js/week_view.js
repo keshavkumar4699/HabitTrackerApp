@@ -36,57 +36,67 @@ function renderWeekCalendar(weekfirstday) {
   } ${weekfirstday.getFullYear()}`;
 
   //update days html
-  let daysHTMLQueries = "";
+  // let daysHTMLQueries = "";
 
-  for (let i = 1; i <= 7; i++) {
-    let display_date = weekfirstday.getDate();
-    daysHTMLQueries += `<div class="day" id="day">${display_date}</div>`;
-    weekfirstday.setDate(weekfirstday.getDate() + 1);//incrementing weekdays by 1
-  }
+  // for (let i = 1; i <= 7; i++) {
+  //   let display_date = weekfirstday.getDate();
+  //   daysHTMLQueries += `<div class="day" id="day">${display_date}</div>`;
+  //   weekfirstday.setDate(weekfirstday.getDate() + 1);//incrementing weekdays by 1
+  // }
 
-  hideTodayBtn();
-  daysContainer.innerHTML = daysHTMLQueries;
+  // hideTodayBtn();
+  // daysContainer.innerHTML = daysHTMLQueries;
 }
 
 renderWeekCalendar(firstday);
 
-//next week button
-nextWeekBtn.addEventListener("click", () => {
-  first = curr.getDate() - curr.getDay();
-  first = first + 7;
+// //next week button
+// nextWeekBtn.addEventListener("click", () => {
+//   first = curr.getDate() - curr.getDay();
+//   first = first + 7;
 
-  let nextday = new Date(curr.setDate(first));
-  renderWeekCalendar(nextday);
-});
+//   let nextday = new Date(curr.setDate(first));
+//   renderWeekCalendar(nextday);
+// });
 
-//previous week button
-prevWeekBtn.addEventListener("click", () => {
-  first = curr.getDate() - curr.getDay();
-  first = first - 7;
+// //previous week button
+// prevWeekBtn.addEventListener("click", () => {
+//   first = curr.getDate() - curr.getDay();
+//   first = first - 7;
 
-  let prevday = new Date(curr.setDate(first));
-  renderWeekCalendar(prevday);
-});
+//   let prevday = new Date(curr.setDate(first));
+//   renderWeekCalendar(prevday);
+// });
 
-//go to today
-todayBtn.addEventListener("click", () => {
-  temp = 0;//for keeping track of increment and decrement of weeks
+// //go to today
+// todayBtn.addEventListener("click", () => {
+//   temp = 0;//for keeping track of increment and decrement of weeks
 
-  let curr = new Date(); // get current date
-  let first = curr.getDate() - curr.getDay();
-  firstday = new Date(curr.setDate(first));
-  //renderWeekCalendar();
-  renderWeekCalendar(firstday);
-});
+//   let curr = new Date(); // get current date
+//   let first = curr.getDate() - curr.getDay();
+//   firstday = new Date(curr.setDate(first));
+//   //renderWeekCalendar();
+//   renderWeekCalendar(firstday);
+// });
 
-//hide today button if already current month selected and vice versa
-function hideTodayBtn(){
-  console.log(first);
-  if(
-    firstday.getDate() === first+7
-  ){
-    todayBtn.style.display = "none";
-  } else{
-    todayBtn.style.display = "flex";
-  }
+// //hide today button if already current month selected and vice versa
+// function hideTodayBtn(){
+//   console.log(first);
+//   if(
+//     firstday.getDate() === first+7
+//   ){
+//     todayBtn.style.display = "none";
+//   } else{
+//     todayBtn.style.display = "flex";
+//   }
+// }
+
+function getStatusData(e){
+  var setStatusData = {
+    'date' : e.getAttribute('data-date'),
+    'habitId' : e.getAttribute('data-habit')
+  };
+  setStatusDataString = JSON.stringify(setStatusData);
+  localStorage.setItem( 'passSetStatusData', setStatusDataString);
+  location='/status/add_status';
 }

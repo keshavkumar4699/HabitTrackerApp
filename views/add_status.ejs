@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/add_status.css">
+
+<div class="container text-center">
+  <h3 class="text-center title">Add Status</h3>
+  <form action="/status/create" method="post">
+    <select class="form-select form-select-lg mb-3">
+      <option selected disabled>Select Status</option>
+      <option value="Done">Done</option>
+      <option value="Not Done">Not Done</option>
+    </select>
+    <input type="hidden" name="date" id="date" />
+    <input type="hidden" name="habit" id="habit" />
+    <input type="submit" class="btn btn-primary">
+  </form>
+</div>
+
+<script src="/js/add_status.js"></script>

@@ -31,11 +31,25 @@
           <div class="day">Fri</div>
           <div class="day">Sat</div>
         </div>
+        <%for(let hab of habits){%>
         <div class="task" id="task" name="task">
-          <h6>Workout</h6>
+          <h6><%=hab.name%></h6>
           <div class="days">
+            <%
+            var curr = new Date(); // get current date
+            var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+            var firstday = new Date(curr.setDate(first));
+            for (let i = 1; i <= 7; i++) {
+            let display_date = firstday.getDate();
+            %>
+            <button class="day" name="add-status" onclick="getStatusData(this)" data-date="<%=firstday.toDateString()%>" data-habit="<%=hab._id%>"><%=display_date%></button>
+            <%
+            firstday.setDate(firstday.getDate() + 1);//incrementing weekdays by 1
+            }
+            %>
           </div>
         </div>
+            <%}%>
       </div>
     </div>
 
