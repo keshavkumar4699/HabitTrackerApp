@@ -5,8 +5,12 @@ const statusSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Habit'
   },
+  date:{
+    type:Date,
+    required: true
+  },
   status:{
-    type: Boolean,
+    type: String,
   }
 }, 
 {

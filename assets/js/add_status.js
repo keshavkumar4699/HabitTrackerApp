@@ -1,12 +1,14 @@
-var mongoose = require('mongoose');
-
 const statusDataString = localStorage.getItem('passSetStatusData');//get data from local storage
 const statusData = JSON.parse(statusDataString);
 
+function setValue(variable, value) {
+  var element = document.getElementById(variable);
+  element.value = value;
+}
 
-console.log(statusData.date);
-console.log(statusData.habitId);
-document.getElementById("date").value = statusData.date;
-document.getElementById("habit").value = mongoose.Types.ObjectId(statusData.habitId);
+window.onload = function(){
+  setValue('date', statusData.date);
+  setValue('habit', statusData.habitId)
+}
 
 localStorage.removeItem( 'passSetStatusData' ); // Clear the localStorage

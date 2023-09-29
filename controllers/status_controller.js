@@ -1,23 +1,22 @@
 const Habit = require("../models/habit_list");
 const Status = require("../models/habit_status");
 
+module.exports.add_status = function(req, res){
+  try{
+    return res.render("add_status",{
+      title: "Add Status"
+    });
+  } catch(err) {
+    console.err("*****error*****", err);
+  }
+}
+
 module.exports.create = async function (req, res) {
   try {
-    let habit = await Habit.findById(req.body.habit);
-
-    //creating new status in status model
-    let status = await Status.create({
-      status: req.body.status,
-      habit: req.body.habit,
-    });
-
-    //adding status to habit array
-    habit.status.push(status);
-    habit.save();
-
-    return res.redirect("back");
+    await Status.create(req.body);
+    return res.redirect("/week_view");
   } catch (err) {
     console.log(err);
-    return res.redirect("back");
+    return res.redirect("/week_view");
   }
 };
