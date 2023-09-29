@@ -84,6 +84,7 @@
   font-weight: 400;
   color: #031633;
   background-color: #fff;
+  border: 1px solid #084298;
   transition: all 0.3s ease-in-out;
 }
 

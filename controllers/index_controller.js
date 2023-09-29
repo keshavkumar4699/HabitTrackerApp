@@ -12,10 +12,12 @@ module.exports.home = async function(req, res){
   }
 }
 
-module.exports.week_detail = function(req, res){
+module.exports.week_detail = async function(req, res){
   try{
+    const habitList = await Habit.find({}); 
     res.render('week_view', {
       title: 'Week View',
+      habits: habitList
     });
   } catch(err){
     console.log(`******error encountered week_view controller****** ${err}`);
