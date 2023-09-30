@@ -3,11 +3,10 @@ const mongoose = require('mongoose');
 const statusSchema = new mongoose.Schema({
   habit:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Habit'
+    ref: 'Habit',
   },
   date:{
-    type:Date,
-    required: true
+    type: Date,
   },
   status:{
     type: String,

@@ -1,4 +1,5 @@
 const Habit = require("../models/habit_list");
+const Status = require("../models/habit_status")
 
 module.exports.home = async function(req, res){
   try{
@@ -14,7 +15,7 @@ module.exports.home = async function(req, res){
 
 module.exports.week_detail = async function(req, res){
   try{
-    const habitList = await Habit.find({}); 
+    const habitList = await Habit.find({}).populate('status');
     res.render('week_view', {
       title: 'Week View',
       habits: habitList

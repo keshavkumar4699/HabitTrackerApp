@@ -13,7 +13,11 @@ module.exports.add_status = function(req, res){
 
 module.exports.create = async function (req, res) {
   try {
-    await Status.create(req.body);
+    let status = await Status.create(req.body);
+    await Habit.findByIdAndUpdate(
+      req.body.habit,
+      {$push: {'status': String(status._id)}}
+      );
     return res.redirect("/week_view");
   } catch (err) {
     console.log(err);
