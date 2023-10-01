@@ -103,8 +103,8 @@ function getStatusData(e){
 
 function updateStatusData(e){
   var setStatusData = {
-    'req' : 'update',
-    'id': e.getAttribute('data-id')
+    'id': e.getAttribute('data-id'),
+    'habitId' : e.getAttribute('data-habit')
   };
   console.log(setStatusData);
   setStatusDataString = JSON.stringify(setStatusData);

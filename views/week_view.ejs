@@ -59,10 +59,10 @@
 
               if(task_status=="Done"){ 
                 task_status="" %>
-                <button id="done" class="day" name="add-status" onclick="updateStatusData(this)" data-id="<%=task_id.toString()%>"><%=display_date%></button>
+                <button id="done" class="day" name="add-status" onclick="updateStatusData(this)" data-id="<%=task_id.toString()%>" data-habit="<%=hab._id%>"><%=display_date%></button>
               <%} else if(task_status=="Not Done"){
                 task_status="" %>
-                <button id="not-done" class="day" name="add-status" onclick="updateStatusData(this)" data-id="<%=task_id.toString()%>"><%=display_date%></button>
+                <button id="not-done" class="day" name="add-status" onclick="updateStatusData(this)" data-id="<%=task_id.toString()%>" data-habit="<%=hab._id%>"><%=display_date%></button>
               <%} else {%>
                 <button class="day" name="add-status" onclick="getStatusData(this)" data-date="<%=week_first_date.toDateString()%>" data-habit="<%=hab._id%>"><%=display_date%></button>
               <%}

@@ -70,10 +70,18 @@ module.exports.update_status = function (req, res) {
 
 //function to update status
 module.exports.update = async function (req, res) {
+  
   try {
-    await Status.findByIdAndUpdate(req.query.id, {
-      $set: { status: req.body.status },
-    });
+    if(req.body.status!='Unmark'){
+      await Status.findByIdAndUpdate(req.query.id, {
+        $set: { status: req.body.status },
+      });
+    } else {
+      await Status.findByIdAndDelete(req.query.id);
+      await Habit.findByIdAndUpdate(req.query.habit, {
+        $pull: { status: req.query.id },
+      });
+    }
     return res.redirect("/week_view");
   } catch (err) {
     console.log(err);
