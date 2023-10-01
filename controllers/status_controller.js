@@ -44,14 +44,35 @@ module.exports.add_status = function (req, res) {
 module.exports.create = async function (req, res) {
   try {
     let status = await Status.create(req.body);
-    let habit = await Habit.findById(req.body.habit).populate("status");
-
-    calc_streak(habit);
+    // let habit = await Habit.findById(req.body.habit).populate("status");
 
     await Habit.findByIdAndUpdate(req.body.habit, {
       $push: { status: String(status._id) },
       $inc: { total: 1 }, //incrementing total everytime new status gets created
-      // $set: { streak: calc_streak(habit) },
+    });
+    return res.redirect("/week_view");
+  } catch (err) {
+    console.log(err);
+    return res.redirect("/week_view");
+  }
+};
+
+//rendering update status page
+module.exports.update_status = function (req, res) {
+  try {
+    return res.render("update_status", {
+      title: "Update Status",
+    });
+  } catch (err) {
+    console.err("*****error*****", err);
+  }
+};
+
+//function to update status
+module.exports.update = async function (req, res) {
+  try {
+    await Status.findByIdAndUpdate(req.query.id, {
+      $set: { status: req.body.status },
     });
     return res.redirect("/week_view");
   } catch (err) {
