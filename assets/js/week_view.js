@@ -100,3 +100,14 @@ function getStatusData(e){
   localStorage.setItem( 'passSetStatusData', setStatusDataString);
   location='/status/add_status';
 }
+
+function updateStatusData(e){
+  var setStatusData = {
+    'req' : 'update',
+    'id': e.getAttribute('data-id')
+  };
+  console.log(setStatusData);
+  setStatusDataString = JSON.stringify(setStatusData);
+  localStorage.setItem( 'passSetStatusData', setStatusDataString);
+  location='/status/update_status';
+}
