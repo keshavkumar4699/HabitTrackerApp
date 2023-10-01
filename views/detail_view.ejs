@@ -1,5 +1,50 @@
 <link rel="stylesheet" href="css/detail_view.css">
 
+<!-- function to calculate days between two dates -->
+<%
+  function get_days_between_dates(date_1, date_2){
+    const oneDay = 1000*60*60*24;
+    const date_1_ms = date_1.getTime();
+    const date_2_ms = date_2.getTime();
+    const difference_ms = Math.abs(date_1_ms - date_2_ms);
+    return Math.round(difference_ms/oneDay);
+  }
+
+  var today = new Date();
+%>
+
+<!-- function to calculate streak -->
+<%
+//function to calculate the current streak
+var calc_streak = function (habit) {
+  const today_date = new Date();
+  var prev_date = today_date;
+  var streak = 0;
+  while(1){
+    console.log("Inside while");
+    for (stat of habit.status) {
+      console.log("Inside for loop");
+      console.log(stat.date.toDateString(), prev_date.toDateString());
+      if (stat.date.toDateString() == prev_date.toDateString()) { //if status is marked
+        console.log("Inside if status is found");
+        if(stat.status == "Done"){ //if status is marked **DONE**
+          console.log("Inside if status is marked done and streak is incemented");
+          streak++;
+          break;
+        } else { //if status is marked **UNDONE**
+          console.log("Inside if status is marked done and streak is incemented");
+          return streak;
+        }
+      } else { // if status is not marked
+        console.log("Inside if status is not found");
+        return streak;
+      }
+    }
+    prev_date = new Date(prev_date - 864e5);
+  }
+};
+%>
+
 <%- include('./includes/_header.ejs') %>
 
 <div class="d-flex" id="wrapper">
@@ -19,9 +64,9 @@
               <p><i class="fa fa-star-o"></i></p>
               <!-- changes to <i class="fa fa-star"></i> -->
               <div class="d-flex w-100 justify-content-between">
-                <small><%=i.streak%> days</small>
+                <small><%=calc_streak(i)%> days</small>
                 <small><%=i.bestStreak%> best</small>
-                <small><%=i.total%> total</small>
+                <small><%=i.status.length%>/<%=get_days_between_dates(i.createdAt, today)%></small>
                 <small><%=i.habit_time%></small>
                 <small><%=i.frequency%></small>
               </div>

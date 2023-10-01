@@ -3,7 +3,7 @@ const Status = require("../models/habit_status")
 
 module.exports.home = async function(req, res){
   try{
-    const habitList = await Habit.find({}); 
+    const habitList = await Habit.find({}).populate('status'); 
     res.render("detail_view", {
       title: 'Details',
       habits:  habitList
