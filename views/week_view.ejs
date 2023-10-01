@@ -6,7 +6,7 @@
 
   <%-include('./includes/_sidebar.ejs')%>
 
-    <div class="container col-12">
+    <div class="container col-12 mb-3">
       <div class="calendar">
         <div class="header">
           <div class="month"></div>
@@ -35,21 +35,42 @@
         <div class="task" id="task" name="task">
           <h6><%=hab.name%></h6>
           <div class="days">
-            <%
+          <%
             var curr = new Date(); // get current date
             var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-            var firstday = new Date(curr.setDate(first));
-            for (let i = 1; i <= 7; i++) {
-            let display_date = firstday.getDate();
-            %>
-            <button class="day" name="add-status" onclick="getStatusData(this)" data-date="<%=firstday.toDateString()%>" data-habit="<%=hab._id%>"><%=display_date%></button>
-            <%
-            firstday.setDate(firstday.getDate() + 1);//incrementing weekdays by 1
+            var last = first + 6; //get last day of week number
+
+            var week_first_date = new Date(curr.setDate(first)); //date on sunday of current week
+            var week_last_date = new Date(curr.setDate(last)); //date on saturday of current week
+
+            var task_status = "";
+
+            while (week_first_date <= week_last_date) {
+              let display_date = week_first_date.getDate();
+
+              for(let i=0; i<hab.status.length; i++){
+                if(hab.status[i].date.toDateString() == week_first_date.toDateString()){
+                  week_start_index = i;
+                  task_status = hab.status[i].status;
+                  break;
+                }
+              }
+
+              if(task_status=="Done"){ 
+                task_status="" %>
+                <button id="done" class="day" name="add-status"><%=display_date%></button>
+              <%} else if(task_status=="Not Done"){
+                task_status="" %>
+                <button id="not-done" class="day" name="add-status"><%=display_date%></button>
+              <%} else {%>
+                <button class="day" name="add-status" onclick="getStatusData(this)" data-date="<%=week_first_date.toDateString()%>" data-habit="<%=hab._id%>"><%=display_date%></button>
+              <%}
+              week_first_date.setDate(week_first_date.getDate() + 1);//incrementing weekdays by 1
             }
-            %>
+          %>
           </div>
         </div>
-            <%}%>
+        <%}%>
       </div>
     </div>
 

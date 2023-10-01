@@ -1,4 +1,5 @@
 .container {
+  height: -moz-fit-content;
   height: fit-content;
   margin-top: 5vh;
   display: flex;
@@ -114,4 +115,10 @@
   margin-bottom: 10px;
 }
 
-/*# sourceMappingURL=week_view.css.map */
+#done {
+  background-color: #afff80;
+}
+
+#not-done {
+  background-color: #ffcccb;
+}/*# sourceMappingURL=week_view.css.map */
