@@ -5,7 +5,7 @@ const db = require("./config/mongoose");
 const dotenv = require('dotenv').config();
 
 //set the port for website
-const port = process.env.PORT;
+const port = 8000;
 
 //setup static files folder
 app.use(express.static("./assets"));
@@ -14,7 +14,6 @@ app.use(express.static("./assets"));
 app.use(expressLayouts);
 
 //to encode body in url after getting response
-app.use(express.json);
 app.use(express.urlencoded({ extended: true }));
 
 //put scripts and styles from pages to layout

@@ -1,22 +1,23 @@
 <div id="nav-bar-container">
-    <nav class="navbar navbar-expand navbar-light bg-light border-bottom">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="navbar-nav me-auto mb-2 mb-lg-0">
-                <button class="btn btn-primary" id="sidebarToggle" name="sidebarToggle"><i
-                        class="fa fa-bars"></i></button>
-                <a class="navbar-brand" href="#">
-                    <%=title%>
-                </a>
-            </div>
-            <div class="d-flex gap-2">
-                <button class="btn btn-outline-success" type="submit" name="add-habit" onclick="visitAddPage();">
-                    <i class="fa-regular fa-plus fa-sm"></i> Add Habit
-                </button>
-                <!-- FUNCTIONALITY IN JAVASCRIPT FILE -->
-                <button class="btn btn-outline-danger" type="submit" name="destroy-habit" onclick="deleteTask();">
-                    <i class="fa fa-minus fa-sm"></i> Delete Habit
-                </button>
-            </div>
-        </div>
-    </nav>
+	<nav class="navbar navbar-expand navbar-light bg-light border-bottom">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="navbar-nav me-auto mb-2 mb-lg-0">
+				<button class="btn btn-primary" id="sidebarToggle" name="sidebarToggle"><i class="fa fa-bars"></i></button>
+				<a class="navbar-brand" href="#">
+					<%=title%>
+				</a>
+			</div>
+			<div class="d-flex gap-2" id="header-buttons">
+				<!-- add task button -->
+				<button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#add-habit-modal">
+					<i class="fa-regular fa-plus fa-sm"></i> Add Habit
+				</button>
+				<%-include('./_addhabit')%>
+				<!-- delete task button -->
+				<button class="btn btn-outline-danger" type="submit" name="destroy-habit" onclick="deleteTask();">
+					<i class="fa fa-minus fa-sm"></i> Delete Habit
+				</button>
+			</div>
+		</div>
+	</nav>
 </div>

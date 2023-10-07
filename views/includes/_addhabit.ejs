@@ -1,0 +1,43 @@
+<div class="modal fade" id="add-habit-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New Habit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="add-habit" class="container text-center">
+            <form class="row row-cols-lg-auto g-3 align-items-center" action="/habit/create" method="post" id="add-habit-form">
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="input-group-text">Habit Name</div>
+                  <input type="text" class="form-control" name="name" placeholder="Habit Name">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="input-group-text">Habit Time</div>
+                  <input type="time" class="form-control" name="habit_time" placeholder="Time">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <select class="form-select" name="frequency">
+                  <option selected disabled>Habit Frequency</option>
+                  <option value="Daily">Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" form="add-habit-form">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
