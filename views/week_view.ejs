@@ -10,17 +10,6 @@
       <div class="calendar">
         <div class="header">
           <div class="month"></div>
-          <div class="btns">
-            <div class="btn today-btn">
-              <i class="fas fa-calendar-day"></i>
-            </div>
-            <div class="btn prev-week-btn">
-              <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="btn next-week-btn">
-              <i class="fas fa-chevron-right"></i>
-            </div>
-          </div>
         </div>
         <div class="weekdays">
           <div class="day">Sun</div>
@@ -31,23 +20,30 @@
           <div class="day">Fri</div>
           <div class="day">Sat</div>
         </div>
+        <!-- loop through habit for each habit -->
         <%for(let hab of habits){%>
         <div class="task" id="task" name="task">
           <h6><%=hab.name%></h6>
           <div class="days">
           <%
-            var curr = new Date(); // get current date
-            var first = curr.getDate() - 6; //get last day of week number
+            <!-- get current date -->
+            var curr = new Date();
+            <!-- get last day of week number -->
+            var first = curr.getDate() - 6;
 
-            var week_first_date = new Date(curr.setDate(first)); //date on sunday of current week
-            var week_last_date = new Date(); //date on saturday of current week
+            <!-- date on sunday of current week -->
+            var week_first_date = new Date(curr.setDate(first));
+            <!-- date on saturday of current week -->
+            var week_last_date = new Date();
 
             var task_status = "";
             var task_id;
 
+            <!-- loop for last 7 days and increment week_first_date -->
             while (week_first_date <= week_last_date) {
               let display_date = week_first_date.getDate();
 
+              <!-- loop to traverse each habit and fetch task status and task id -->
               for(let i=0; i<hab.status.length; i++){
                 if(hab.status[i].date.toDateString() == week_first_date.toDateString()){
                   week_start_index = i;
@@ -59,11 +55,14 @@
 
               if(task_status=="Done"){ 
                 task_status="" %>
+                <!-- when status is already set as done then to update status -->
                 <button id="done" class="day" name="add-status" onclick="updateStatusData(this)" data-id="<%=task_id.toString()%>" data-habit="<%=hab._id%>"><%=display_date%></button>
               <%} else if(task_status=="Not Done"){
                 task_status="" %>
+                <!-- when status is already set as not done then to update status-->
                 <button id="not-done" class="day" name="add-status" onclick="updateStatusData(this)" data-id="<%=task_id.toString()%>" data-habit="<%=hab._id%>"><%=display_date%></button>
               <%} else {%>
+                <!-- when no status is set then set status -->
                 <button class="day" name="add-status" onclick="getStatusData(this)" data-date="<%=week_first_date.toDateString()%>" data-habit="<%=hab._id%>"><%=display_date%></button>
               <%}
               week_first_date.setDate(week_first_date.getDate() + 1);//incrementing weekdays by 1

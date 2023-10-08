@@ -7,7 +7,7 @@ router.get('/', indexController.home);
 router.get('/week_view', indexController.week_detail);
 router.get('/month_view', indexController.month_detail);
 
-router.use('/habit', require('./habit_router.js'));
-router.use('/status', require('./status_router.js'));
+router.use('/habit', require('./habit_router.js')); //for habit routes
+router.use('/status', require('./status_router.js')); //for status routes
 
 module.exports = router;

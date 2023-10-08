@@ -1,13 +1,16 @@
+<!-- modal for add new habit -->
 <div class="modal fade" id="add-habit-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
+          <!-- title of modal -->
           <h5 class="modal-title" id="exampleModalLabel">Add New Habit</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div id="add-habit" class="container text-center">
+            <!-- form to create new habit -->
             <form class="row row-cols-lg-auto g-3 align-items-center" action="/habit/create" method="post" id="add-habit-form">
               <div class="col-12">
                 <div class="input-group">
@@ -34,6 +37,7 @@
             </form>
           </div>
         </div>
+        <!-- modal footer -->
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" form="add-habit-form">Submit</button>
         </div>

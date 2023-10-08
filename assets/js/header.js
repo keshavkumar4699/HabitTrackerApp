@@ -1,3 +1,4 @@
+// check if screen id loaded or not 
 if (document.readyState !== 'loading') {
   console.log('document is already ready, just execute code here');
   myInitCode();
@@ -16,6 +17,7 @@ function myInitCode() {
       if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
           document.body.classList.toggle('sb-sidenav-toggled');
       }
+      //side bar toggle when clicked on bars button
       sidebarToggle.addEventListener('click', event => {
           event.preventDefault();
           document.body.classList.toggle('sb-sidenav-toggled');
