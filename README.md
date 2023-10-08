@@ -77,3 +77,9 @@ project
 │       │ header.js
 │       │ update_status.js
 │       │ week_view.js
+
+## FURHTER IMPROVEMENTS
+1. streak
+2. best streak
+3. total no of days task done
+4. mark favorites
