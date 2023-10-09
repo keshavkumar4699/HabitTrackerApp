@@ -2,17 +2,7 @@ const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
 const dotenv = require('dotenv').config();
-const mongoose = require('mongoose');
-
-//connect to database
-async function main() {
-    const db = await mongoose.connect(`mongodb://127.0.0.1:27017/habit_tracker`);
-    module.exports = db;
-}
-
-main()
-.then(() => console.log('MongoDB Connected...')) //if connected
-.catch(err => console.log(err)); //if error
+const db = require('./config/mongoose');
 
 //set the port for website
 const port = process.env['PORT'];
