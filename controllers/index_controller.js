@@ -1,5 +1,4 @@
 const Habit = require("../models/habit_list");
-const Status = require("../models/habit_status")
 
 module.exports.home = async function(req, res){
   try{
