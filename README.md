@@ -1,20 +1,45 @@
 # HabitTrackerApp
-A habit tracker app, where we can define habits and track them. A fullstack app with Nodejs and Ejs.
+A full stack web application using node and ejs where users can add habits and track them.
+
+### Features
+- Multiple habits can be added and tracked.
+- Each habit is tracked everyday with 3 status
+  - Done - Mark the habit as done for a day
+  - Not done - Mark the habit as not done for a day
+  - None - User did not take any action on a habit for a day
+- Views
+  - A view to show all current habits. Here add button has been added to add multiple habits
+  - A view to display 7 days of each habit
+- Status of habit
+ - today as well as last 6 days status is shown
+ - user can toggle between status of the habit anytime
 
 ## HOW TO SETUP PROJECT
-1. install packages with npm i
-  dotenv
-  ejs
-  express
-  express-ejs-layouts
-  mongoose
-  node
-  nodemon
-  sass
-2. set port env variable
-3. run script to start -> npm start
+
+Follow given steps to run this project on your local machine
+
+1. clone this repository
+
+```$ git clone https://github.com/keshavkumar4699/habit-tracker-app```
+
+2. Install required dependencies
+
+```$ npm install```
+
+3. Set port env variables
+
+```$ set PORT=<port_number>```
+
+4. Start application
+
+```$ npm start```
+
+5. Open application in browser
+
+```$ http://localhost:<PORT>```
 
 ## FOLDER STRUCTURE
+```
 project
 │   README.md
 │   index.js
@@ -77,6 +102,7 @@ project
 │       │ header.js
 │       │ update_status.js
 │       │ week_view.js
+```
 
 ## FURHTER IMPROVEMENTS
 1. streak

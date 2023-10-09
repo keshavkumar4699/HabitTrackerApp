@@ -5,7 +5,7 @@ const db = require("./config/mongoose");
 const dotenv = require('dotenv').config();
 
 //set the port for website
-const port = 8000;
+const port = process.env['PORT'];
 
 //setup static files folder
 app.use(express.static("./assets"));
